@@ -2,10 +2,11 @@
 ###### *with GUI and everything!*  
 Kea is an appication for downloading comics from https://www.webtoons.com for personal, offline use.  
   
->***Note:*** Kea is currently not actively maintained and will stay that way for the foreseeable future. It works fine in most cases but I currently don't have the time to iron out any bugs. I would like to rework the entire project, but that must wait for now.
+>***Note:*** This fork was created to fix some issues with viewing due to the naming convention. It also addresses the (Imho) crappy looking folder and file naming. I spent a few hours working on this and have no idea how to really code. Seemed like simple issues to fix so i tried. Heh.
+
 ## How To: Download
-Download [Kea v.1.3.4](https://github.com/RustingRobot/Kea/releases/download/v1.3.4/Kea.v1.3.4.zip)
-or look at all releases [here](https://github.com/RustingRobot/Kea/releases).  
+Download [Kea v.1.3.4.1](https://github.com/Astupidiot/Kea/releases/download/1.3.4.1/Kea.v1.3.4.1.zip)
+or look at all releases [here](https://github.com/Astupidiot/Kea/releases).  
 After the .zip folder downloaded unzip it and run Kea.exe.  
 *(all files in the Kea folder need to stay in the same directory)*
 
@@ -36,8 +37,6 @@ To edit Kea, download everything and open ***Kea.sln*** in Visual Studio.
 * ***one image:***  every image of a given chapter is stitched together verically to create one very tall image per chapter.
 ###### Warning: if a chapter is so long that the resulting merged image exceeds 30,000 pixels in height it will be down scaled (in some cases even until the text isn't readable anymore). In those cases the PDF option may be better.   
 * Now you can click the ***start*** button and wait (all controls should be deactivated until the download is done)  
-## Contact me
-write me an email: rusting.robot.scratch@gmail.com
 ## used packages
 - **HtmlAgilityPack** - for parsing HTML
 - **ITextSharp** - for converting images to a PDF file
