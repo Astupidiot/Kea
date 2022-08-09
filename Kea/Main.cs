@@ -214,7 +214,10 @@ namespace Kea
         private void downloadComic(int t)
         {
             string savePath = savepathTB.Text + @"\";
-            string curName = QueueGrid.Rows[t].Cells[0].Value.ToString();
+            //changed lines below to allow for Capitalization and removing the -
+            string webName = QueueGrid.Rows[t].Cells[0].Value.ToString();
+            string curName = webName.Replace('-', ' ');
+            curName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(curName);
             if (cartoonFoldersCB.Checked) { Directory.CreateDirectory(savePath + curName); savePath += curName; }
 
             //set start and end chapter
@@ -246,7 +249,7 @@ namespace Kea
                         {
                             processInfo.Invoke((MethodInvoker)delegate { processInfo.Text = $"downloading image {j / 2} of chapter {i + 1} of the comic \"{curName}\"!"; }); //run on the UI thread
                             client.Headers.Add("Referer", ToonChapters[t][i]);    //refresh the referer for each request!
-                            string imgName = $"{curName} Ch{i + 1}.{j / 2}";
+                            string imgName = $"{j / 2:D3}"; //don't like the naming convention... simplified it and added leading zeroes
                             if (chapterFoldersCB.Checked || saveAs != "multiple images") { client.DownloadFile(new Uri(childNodes[j].Attributes["data-url"].Value), $"{savePath}\\({i + 1}) {ToonChapterNames[t][i]}\\{imgName}.jpg"); }
                             else { client.DownloadFile(new Uri(childNodes[j].Attributes["data-url"].Value), $"{savePath}\\{imgName}.jpg"); }
                             processInfo.Invoke((MethodInvoker)delegate { try { progressBar.Value = i * 100 + (int)(j / (float)childNodes.Count * 100); } catch { } });
